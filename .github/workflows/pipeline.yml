@@ -16,13 +16,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3      
+      - uses: actions/checkout@v3
                   
-      - name: flutter-cli  
-        uses: steebchen/flutter@v1.1.0
-      
       - name: Install dependencies
-        run: flutter pub get
+        uses: steebchen/flutter@v1.1.0
+        with:
+          args: pub get
       
       - name: Run test
-        run: flutter test
+        uses: steebchen/flutter@v1.1.0
+        with:
+          args: test
+
+      - name: Build apk
+        uses: steebchen/flutter@v1.1.0
+        with:
+          args: build apk --release
