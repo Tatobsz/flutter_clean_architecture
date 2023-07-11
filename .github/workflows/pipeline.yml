@@ -17,18 +17,20 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-                  
-      - name: Install dependencies
-        uses: steebchen/flutter@v1.1.0
+                        
+      - name: Flutter cli
+        uses: subosito/flutter-action@v2
         with:
-          args: pub get
-      
-      - name: Run test
-        uses: steebchen/flutter@v1.1.0
-        with:
-          args: test
+          flutter-version: '3.10.5'
 
+      - name: Install dependencies
+        run: flutter pub get
+      
+      - name: Run tests
+        run: flutter test
+      
       - name: Build apk
-        uses: steebchen/flutter@v1.1.0
-        with:
-          args: build apk --release
+        run: flutter build apk
+
+      - name: Build appbundle
+        run: flutter build appbundle      
