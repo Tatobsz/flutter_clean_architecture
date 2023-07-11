@@ -34,35 +34,36 @@ class _CounterPageState extends State<CounterPage> {
       appBar: AppBar(
         title: const Text('Counter Page'),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          const Text('Actual value in counter'),
-          Center(
-            child: Text(_counter?.value.toString() ?? '0'),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              IconButton(
-                onPressed: () => _incrementCounterUseCase.call(_counter!).then(
-                      (value) => setState(() {
-                        _counter = value;
-                      }),
-                    ),
-                icon: const Icon(Icons.add),
-              ),
-              IconButton(
-                onPressed: () => _decrementCounterUseCase.call(_counter!).then(
-                      (value) => setState(() {
-                        _counter = value;
-                      }),
-                    ),
-                icon: const Icon(Icons.remove),
-              ),
-            ],
-          )
-        ],
+      body: Center(
+        child: Column(
+          children: [
+            const Text('Actual value in counter'),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                IconButton(
+                  onPressed: () =>
+                      _decrementCounterUseCase.call(_counter!).then(
+                            (value) => setState(() {
+                              _counter = value;
+                            }),
+                          ),
+                  icon: const Icon(Icons.remove),
+                ),
+                Text(_counter?.value.toString() ?? '0'),
+                IconButton(
+                  onPressed: () =>
+                      _incrementCounterUseCase.call(_counter!).then(
+                            (value) => setState(() {
+                              _counter = value;
+                            }),
+                          ),
+                  icon: const Icon(Icons.add),
+                ),
+              ],
+            )
+          ],
+        ),
       ),
     );
   }

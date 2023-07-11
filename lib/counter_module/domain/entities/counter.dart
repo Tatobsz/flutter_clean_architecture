@@ -5,11 +5,13 @@ class Counter {
 
   int get value => _value;
 
-  void increment() {
+  Counter increment() {
     _value++;
+    return this;
   }
 
-  void decrement() {
+  Counter decrement() {
     _value--;
+    return this;
   }
 }

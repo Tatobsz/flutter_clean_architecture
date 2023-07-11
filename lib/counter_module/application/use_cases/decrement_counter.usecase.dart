@@ -11,7 +11,7 @@ class DecrementCounterUseCase implements IDecrementCounterUseCase {
   @override
   Future<Counter> call(Counter counter) async {
     final newCounter = counter..decrement();
-    await _counterRepository.save(newCounter..decrement());
+    await _counterRepository.save(newCounter);
     return newCounter;
   }
 }

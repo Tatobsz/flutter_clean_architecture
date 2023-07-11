@@ -2,7 +2,7 @@ import '../../domain/entities/counter.dart';
 import '../../application/ports/repositories/counter_respository.dart';
 
 class CounterInMemoryRepository implements ICounterRepository {
-  static Counter _counter = Counter(value: 0);
+  Counter _counter = Counter(value: 0);
 
   @override
   Future<Counter> get() {
